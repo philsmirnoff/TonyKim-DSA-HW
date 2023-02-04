@@ -363,7 +363,7 @@ function sortByValue(array){
 }
 
 Time Complexity: O(n^2) we are using a nested while and for loop that iterates through the array twice
-Space Complexity: O(1) we are not creating any new variables or arrays, just returning a number
+Space Complexity: O(n) we are not creating any new variables or arrays, just returning a number
 
 Problem 13.9:
 function returnDupes(array, array2) {
