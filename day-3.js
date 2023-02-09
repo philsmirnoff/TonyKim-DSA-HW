@@ -29,25 +29,6 @@ const maxSubarraySum = (arr, n) => {
 // Time Complexity: O(n)
 // Space Complexity: O(1)
 
-// slightly modified solution for the same problem using sliding window pattern from Grokking the Coding Interview
-
-const maxSubarraySum = (arr, n) => {
-  let maxSum = 0,
-  windowSum = 0;
-  windowStart = 0;
-
-  for (let windowEnd = 0; windowEnd < arr.length; windowEnd++) {
-    windowSum += arr[windowEnd];// add the next element
-    // slide the window, no need to slide if we've not hit the window size of 'n'
-    if (windowEnd >= n - 1) {
-      maxSum = Math.max(maxSum, windowSum);
-      windowSum -= arr[windowStart];// subtract the element going out
-      windowStart++;// slide the window ahead
-    }
-  }
-  return maxSum;
-}
-
 
 // Problem #2
 // Given a sorted array of integers, find the first occurence of a target value.
@@ -104,6 +85,6 @@ const lengthOfLongestSubstring = (s) => {
   }
   return longest;
 }
-Time Complexity: O(n)
-Space Complexity: O(n)
+// Time Complexity: O(n)
+// Space Complexity: O(n)
 
