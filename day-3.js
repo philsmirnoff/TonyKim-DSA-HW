@@ -24,43 +24,57 @@ const maxSubarraySum = (arr, n) => {
     maxSum = Math.max(maxSum, tempSum);
   }
   return maxSum;
+
 }
+
+console.log(maxSubarraySum([100,200,300,400], 2)) // 700
+console.log(maxSubarraySum([1,4,2,10,23,3,1,0,20], 4)) // 39
+console.log(maxSubarraySum([-3,4,0,-2,6,-1], 2)) // 5
+console.log(maxSubarraySum([3,-2,7,-4,1,-1,4,-2,1],2)) // 5
+console.log(maxSubarraySum([2,3], 3)) // null
 
 // Time Complexity: O(n)
 // Space Complexity: O(1)
 
+//-------------------------------------------------------------//
 
 // Problem #2
 // Given a sorted array of integers, find the first occurence of a target value.
 // if target is not found in the array, return -1.
 
-// We can solve it using divide and conquer pattern with example that you gave us in the class.
+// We can solve it using divide and conquer pattern, modifying example that you gave us in the class.
 
-const binarySearchFirstOccurence = (nums, target) => {
+const binarySearchFirstOccurrence = (nums, target) => {
   let left = 0;
   let right = nums.length - 1;
+  let firstOccurrence = -1;
 
   while (left <= right) {
-    let middleIndex = Math.floor((left + right) / 2);
-    let middleValue = nums[middleIndex];
-
-    if (middleValue === target) {
-      return middleIndex;
-    } else if (middleValue < target) {
-      left = middleIndex + 1;
-    } else if (middleValue > target) {
-      right = middleIndex - 1;
+    let mid = Math.floor((left + right) / 2);
+    if (nums[mid] === target) {
+      firstOccurrence = mid;
+      right = mid - 1;
+    } else if (nums[mid] < target) {
+      left = mid + 1;
     } else {
-      return -1;
+      right = mid - 1;
     }
   }
+  return firstOccurrence;
 }
+
+console.log(binarySearchFirstOccurrence([1,2,3,4,5], 3)) // 2
+console.log(binarySearchFirstOccurrence([1,2,3,4,5], 6)) // -1
+console.log(binarySearchFirstOccurrence([1,1,1,2,2,2,3,3,3], 2)) // 3
 
 // Time Complexity: O(log(n))
 // Space Complexity: O(1)
 
+//-------------------------------------------------------------//
+
 // Problem #3
 // Given a string, find the length of the longest substring without repeating characters.
+
 
 
 const lengthOfLongestSubstring = (s) => {
@@ -85,6 +99,10 @@ const lengthOfLongestSubstring = (s) => {
   }
   return longest;
 }
+
+console.log(lengthOfLongestSubstring("abcabcbb")); // Output: 3
+console.log(lengthOfLongestSubstring("bbbbbb")); // Output: 1
+console.log(lengthOfLongestSubstring("pwwkew")); // Output: 3
 // Time Complexity: O(n)
 // Space Complexity: O(n)
 
