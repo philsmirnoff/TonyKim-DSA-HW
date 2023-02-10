@@ -74,7 +74,7 @@ console.log(binarySearchFirstOccurrence([1,1,1,2,2,2,3,3,3], 2)) // 3
 
 // Problem #3
 // Given a string, find the length of the longest substring without repeating characters.
-
+// We can solve it by using sliding window pattern.
 
 
 const lengthOfLongestSubstring = (s) => {
