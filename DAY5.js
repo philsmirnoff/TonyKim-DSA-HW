@@ -23,7 +23,7 @@ class SingleLinkedList {
     this.tail = null;
     this.length = 0;
   }
-}
+
 
 // shift()
 shift() {
@@ -140,6 +140,7 @@ remove(index) {
   prev.next = removed.next;
   this.length--;
   return removed;
+}
 }
 
 // Problem #2:
