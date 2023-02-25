@@ -205,3 +205,197 @@ const maxArea = (height) => {
 
 // Time Complexity: O(n)
 // Space Complexity: O(1)
+
+
+class Node {
+
+constructor(val) {
+
+this.val = val;
+
+this.next = null;
+
+this.prev = null;
+
+}
+
+}
+
+class DoublyLinkedList {
+
+constructor() {
+
+this.head = null;
+
+this.tail = null;
+
+this.length = 0;
+
+}
+
+
+unshift(val) {
+  let newNode = new Node(val);
+  if (!this.length) {
+    this.head = newNode;
+    this.tail = newNode;
+  }
+  else {
+    newNode.next = this.head;
+    this.head.prev = newNode;
+    this.head = newNode;
+  }
+  this.length++;
+  return this;
+}
+
+get (index) {
+  if (index < 0 || index >= this.length) return null;
+  let counter = 0;
+  let current = this.head;
+
+  if (index <= this.length / 2) {
+    while (counter !== index) {
+      current = current.next;
+      counter++;
+    }
+  } else {
+    counter = this.length - 1;
+    current = this.tail;
+    while (counter !== index) {
+      current = current.prev;
+      counter--;
+    }
+  }
+  return current;
+}
+
+insert(index, val) {
+  if (index < 0 || index > this.length) return;
+  if (index === 0) return this.unshift(val);
+  if (index === this.length) return this.push(val);
+
+  let newNode = new Node(val);
+  let prev = this.get(index - 1);
+  let temp = prev.next;
+  prev.next = newNode;
+  newNode.prev = prev;
+  newNode.next = temp;
+  temp.prev = newNode;
+  this.length++;
+  return this;
+}
+
+remove(index) {
+  if (index < 0 || index >= this.length) return;
+  if (index === 0) return this.shift();
+  if (index === this.length - 1) return this.pop();
+
+  let removed = this.get(index);
+  removed.prev.next = removed.next;
+  removed.next.prev = removed.prev;
+  removed.next = null;
+  removed.prev = null;
+  this.length--;
+  return removed;
+}
+}
+
+
+
+
+class Node {
+
+  constructor {
+
+  this.value. value = value;
+
+  [this.next](http://this.next) = null;
+
+  }
+
+  }
+
+  class Stack {
+
+  constructor() {
+
+  [this.top](http://this.top) = null;
+
+  this.bottom = null;
+
+  this.size = 0;
+
+  }
+
+  push(val) {
+
+  const newNode = new Node(val);
+
+  if (!this.size) {
+  this.top = newNode;
+  this.bottom = newNode;
+  } else {
+  const temp = this.top;
+  this.top = newNode;
+  this.top.next = temp;
+
+}
+this.size++;
+return this;
+  }
+
+
+  pop() {
+  if (!this.size) return null;
+  const temp = this.top;
+  if (this.size === 1) {
+    this.top = null;
+  this.bottom = null;
+  }
+  this.top = this.top.next;
+  this.size--;
+  return temp.value;
+  }
+  }
+
+
+// Queue
+class Node {
+  constructor(val) {
+    this.val = val;
+    this.next = null;
+  }
+}
+
+class Queue {
+  constructor() {
+    this.first = null;
+    this.last = null;
+    this.size = 0;
+  }
+  enqueue(val) {
+    let newNode = new Node(val);
+    if (!this.size) {
+      this.first = newNode;
+      this.last = newNode;
+    } else {
+      this.last.next = newNode;
+      this.last = newNode;
+    }
+    this.size++;
+    return this;
+  }
+  dequeue() {
+    if (!this.length) return null;
+    let temp = this.first;
+    if (this.length === 1) {
+      this.first = null;
+      this.last = null;
+    } else {
+      this.first = this.first.next;
+    }
+    this.length--;
+    return temp.val;
+  }
+}
