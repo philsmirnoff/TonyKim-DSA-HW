@@ -279,6 +279,7 @@ class BinarySearchTree {
 }
 }
 
+// create remove method
 remove(value) {
   if (!this.root) return false;
   let current = this.root;
@@ -295,4 +296,51 @@ remove(value) {
       found = true;
     }
   }
+  if (!found) return false;
+  // if node has no children
+  if (current.left === null && current.right === null) {
+    if (current.value < parent.value) {
+      parent.left = null;
+    } else if (current.value > parent.value) {
+      parent.right = null;
+    }
+  }
+  // if node has one child
+  else if (current.left === null) {
+    if (current.value < parent.value) {
+      parent.left = current.right;
+    } else if (current.value > parent.value) {
+      parent.right = current.right;
+    }
+  }
+  else if (current.right === null) {
+    if (current.value < parent.value) {
+      parent.left = current.left;
+    } else if (current.value > parent.value) {
+      parent.right = current.left;
+    }
+  }
+  // if node has two children
+  else {
+    let temp = current.right;
+    while (temp.left !== null) {
+      temp = temp.left;
+    }
+    current.value = temp.value;
+    temp.value = value;
+    if (temp.right === null) {
+      if (temp.value < parent.value) {
+        parent.left = null;
+      } else if (temp.value > parent.value) {
+        parent.right = null;
+      }
+    } else {
+      if (temp.value < parent.value) {
+        parent.left = temp.right;
+      } else if (temp.value > parent.value) {
+        parent.right = temp.right;
+      }
+    }
+  }
+  return true;
 }
