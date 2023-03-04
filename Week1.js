@@ -279,7 +279,7 @@ class BinarySearchTree {
 }
 }
 
-// create remove method
+
 remove(value) {
   if (!this.root) return false;
   let current = this.root;
