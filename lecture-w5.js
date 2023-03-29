@@ -94,4 +94,12 @@ class Graph {
   }
 }
 
+const g = new Graph();
+g.addVertex("DALL");
+g.addVertex("SUN");
+g.addVertex("HOU");
+g.addEdge()
+g.depthFirstRecursive("DALL");
+g.depthFirstIterative("DALL");
+g.breadthFirstSearch("DALL");
 
